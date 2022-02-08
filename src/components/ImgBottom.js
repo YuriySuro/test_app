@@ -5,10 +5,8 @@ function ImgBottom() {
     const [imgBottom, setImgBottom] = useState([]);
 
     useEffect(async () => {
-        let cleanupFUnction = false;
         const res = await axios.get("http://localhost:5000/images/imagesbottom");
-        if(!cleanupFUnction) setImgBottom(res.data);
-        return () => cleanupFunction = true;
+        setImgBottom(res.data);
     }, []);
 
     return (

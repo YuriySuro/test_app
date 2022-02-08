@@ -3,11 +3,9 @@ import React, { useEffect, useState } from "react";
 
 function ImgMiddle() {
     const [imgMiddle, setImgMiddle] = useState([]);
-    let cleanupFunction = false;
     useEffect(async () => { 
         const res = await axios.get("http://localhost:5000/images/imagesmiddle");
-        if(!cleanupFunction) setImgMiddle(res.data);
-        return () => cleanupFunction = true;
+        setImgMiddle(res.data);
     }, []);
 
     return (

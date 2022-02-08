@@ -3,11 +3,10 @@ import React, { useEffect, useState } from "react";
 
 function SocialNetworks() {
     const [socialNetworks, setSocialNetworks] = useState([]);
-    let cleanupFunction = false;
+
     useEffect(async () => {
         const res = await axios.get("http://localhost:5000/socialnetworks");
-        if(!cleanupFunction) setSocialNetworks(res.data);
-        return () => cleanupFunction = true;
+        setSocialNetworks(res.data);
     }, []);
 
     return (

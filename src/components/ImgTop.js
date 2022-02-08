@@ -3,11 +3,9 @@ import React, {useEffect, useState} from "react";
 
 function ImgTop() {
     const [imgTop, setImgTop] = useState([]);
-    let cleanupFunction = false;
     useEffect(async () => {
         const res = await axios.get("http://localhost:5000/images/imagestop");
-        if(!cleanupFunction) setImgTop(res.data);
-        return () => cleanupFunction = true;
+        setImgTop(res.data);
     }, [])
 
     return (

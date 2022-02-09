@@ -9,8 +9,6 @@ function Login() {
     const [message, setMessage] = useState("");
 
     const dispatch = useDispatch();
-    
-    let functionCleanup = false;
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -20,21 +18,13 @@ function Login() {
         });
 
         dispatch(login({
-            name,
-            email,
-            message,
+            name, 
+            email, 
+            message, 
             loggedIn: true
         }));
 
         alert(res.data);
-
-        if(!functionCleanup) {
-            setName("");
-            setEmail("");
-            setMessage("");
-        }
-        
-        return () => functionCleanup = true;
     }
 
     return (
